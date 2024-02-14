@@ -44,7 +44,7 @@ Use your favorite coding tool. Personally, I ([Aaron](https://github.com/Randone
   <head><title>Brain food</title></head>
   <body>
     <script>
-      const html = `<html><head><title>I Didn/'t Use AI</title><body><div><p id="p1" hello="world">a paragraph <span id="s1" hello="world">some spanerific spanny span</span></p></div><h1 id="heading1" hello="world">A HEADING<h1></body></html>`;
+      const html = `<html><head><title>I Didn/'t Use AI</title><body><div><p id="p1" hello="world">a paragraph <span id="s1" hello="world">some spanerific spanny span</span></p></div><h1 id="heading1" hello="world">A HEADING</h1></body></html>`;
 
       function doTheThing(htmlString) {
         const parser = new DOMParser();
