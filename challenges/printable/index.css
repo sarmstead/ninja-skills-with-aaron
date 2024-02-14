@@ -51,6 +51,8 @@ code {
 
 textarea {
   min-height: 300px;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 textarea::placeholder {
