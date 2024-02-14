@@ -6,11 +6,6 @@
   <script src="./loopy.js"></script>
   <script src="./recursily.js"></script>
   <link href="./index.css" rel="stylesheet" />
-  <!-- <script>
-    const html = "<html><h1 hello='world' id='moot'>Bopped</h1><h1 hello='world' id='sugar'>Sugar</h1></html>";
-    // printIds(html);
-    printIdsRecursively(html);
-  </script> -->
 </head>
 
 <body>
@@ -26,11 +21,11 @@
       </label>
       <fieldset>
         <legend>How should we process this code?</legend>
-        <label for="loop">
-          <input id="loop" name="process" type="radio" value="loop" />
+        <label for="loop" class="radio">
+          <input id="loop" name="process" type="radio" value="loop" checked />
           With a Loop
         </label>
-        <label for="recursion">
+        <label for="recursion" class="radio">
           <input id="recursion" name="process" type="radio" value="recursion" />
           With Recursion
         </label>
@@ -42,6 +37,9 @@
       <p id="result">None</p>
     </section>
   </main>
+  <footer>
+    <small>COPYRIGHT © 2024 SUNJAY ARMSTEAD</small>
+  </footer>
 </body>
 
 </html>

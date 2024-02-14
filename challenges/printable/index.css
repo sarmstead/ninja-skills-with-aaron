@@ -2,6 +2,20 @@
   font-family: helvetica, sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 95vh;
+}
+
+main {
+  max-width: 800px;
+  padding: 20px;
+}
+
+
 p {
   font-size: 16px;
   line-height: 24px;
@@ -12,12 +26,6 @@ form {
   flex-direction: column;
   gap: 20px;
   padding: 20px 0;
-}
-
-main {
-  max-width: 800px;
-  padding: 20px;
-  margin: auto;
 }
 
 button {
@@ -33,11 +41,35 @@ button {
   cursor: pointer;
 }
 
+code {
+  font-family: monospace;
+  font-weight: bold;
+  background: whitesmoke;
+  color: navy;
+  padding: 2px 5px;
+}
+
 textarea {
   min-height: 300px;
 }
 
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+textarea, #result {
+  font-family: monospace;
+  padding: 20px;
+  background: black;
+  border: 1px solid black;
+  color: white;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
 label {
+  color: navy;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 16px;
@@ -57,8 +89,48 @@ legend {
   margin-bottom: 4px;
 }
 
+small {
+  display: block;
+  text-align: center;
+}
+
+input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  margin: 0 4px 0 0;
+  border-radius: 100%;
+  border: 2px solid gray;
+  width: 20px;
+  height: 20px;
+}
+
+input[type=radio]:checked::before {
+  display: block;
+  content: "";
+  background: navy;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  pointer-events: none;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+}
+
 .textarea {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+#result {
+  max-height: 150px;
+  overflow: auto;
 }
