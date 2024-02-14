@@ -3,8 +3,11 @@
 <head>
   <title>I Didn't Use AI</title>
   <script src="./loopy.js"></script>
+  <script src="./recursily.js"></script>
   <script>
-    printIds("<html><h1 hello='world' id='moot'>Bopped</h1><h1 hello='world'>Sugar</h1></html>");
+    const html = "<html><h1 hello='world' id='moot'>Bopped</h1><h1 hello='world' id='sugar'>Sugar</h1></html>";
+    // printIds(html);
+    printIdsRecursively(html);
   </script>
 </head>
 
