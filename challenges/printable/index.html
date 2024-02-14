@@ -2,20 +2,46 @@
 
 <head>
   <title>I Didn't Use AI</title>
+  <script defer src="./index.js"></script>
   <script src="./loopy.js"></script>
   <script src="./recursily.js"></script>
-  <script>
+  <link href="./index.css" rel="stylesheet" />
+  <!-- <script>
     const html = "<html><h1 hello='world' id='moot'>Bopped</h1><h1 hello='world' id='sugar'>Sugar</h1></html>";
     // printIds(html);
     printIdsRecursively(html);
-  </script>
+  </script> -->
 </head>
 
 <body>
-  <div>
-    <p id="p1" hello="world">a paragraph <span id="s1" hello="world">a spanerriffic spanny span</span></p>
-  </div>
-  <h1 id="heading1" hello="world">A HEADING<H1>
+  <main>
+    <h1 id="heading1" hello="world">Printable</h1>
+    <p>This is a miniature program built to process your <code>html</code> documents. We'll look through your code, find
+      any nodes with <code>hello="world"</code> attributes, and return a list of ids.</p>
+    <p>Why might you need this? I don't know! But it sure is nifty.</p>
+    <form id="processorForm">
+      <label class="textarea">
+        Add some fancy schmancy HTML
+        <textarea name="code" placeholder="Write some HTML. But please don't be spammy, buzz brain! Mmk, thanks 👋🏽"></textarea>
+      </label>
+      <fieldset>
+        <legend>How should we process this code?</legend>
+        <label for="loop">
+          <input id="loop" name="process" type="radio" value="loop" />
+          With a Loop
+        </label>
+        <label for="recursion">
+          <input id="recursion" name="process" type="radio" value="recursion" />
+          With Recursion
+        </label>
+      </fieldset>
+      <button type="submit">Process!</button>
+    </form>
+    <section>
+      <h2>Results</h2>
+      <p id="result">None</p>
+    </section>
+  </main>
 </body>
 
 </html>
