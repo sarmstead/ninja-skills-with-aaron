@@ -25,17 +25,19 @@
 	Example:
 	Given the matrix:
 		[
-	  		[1, 2, 3],
-	  		[4, 5, 6],
-	  		[7, 8, 9]
+	  		[1, 2, 3], // [0][0]
+	  		[4, 5, 6], // [1][1]
+	  		[7, 8, 9] // [2][2]
 		]
+
+
 
 	The main diagonal elements are 1, 5, 9, and the anti-diagonal elements are 3, 5, 7.
 	The function should return 25 because 1 + 5 + 9 + 3 + 7 = 25
 	(note that 5 is only counted once).
 
-	The problem1Loops function bellow solves this using loops.
-	Your job finish the problem1Recurssion function bellow doing the same thing but with
+	The problem1Loops function below solves this using loops.
+	Your job is to finish the problem1Recursion function below doing the same thing but with
 	recursion.
 
 	The example above is 3x3 but your solution should work for any size matrix.
@@ -59,8 +61,22 @@ function problem1Loops(matrix) {
   return total;
 }
 
-function problem1Recurssion(matrix) {
+function problem1Recursion(matrix) {
+  // Add main diagonal element
+  // Add anti-diagonal element
+  // Avoid double counting the center element in an odd-sized matrix
+
+  // 1. function definition
+
+  // 2. base condition
+
+  // 3. recursive call
+
+
 }
+
+// problem1Recursion([[1, 2, 3], [4, 5, 6], [7, 8, 9]]); iterator = 0; total = 0; returns 1
+//    problem1Recursion([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1, 1); returns 5
 
 const matrix = [
   [1, 2, 3],
@@ -172,7 +188,7 @@ const isDeepEqual = (object1, object2) => {
 
 function callAllMethods() {
 	runFunc("Problem1Loops", ()=>problem1Loops(matrix), 25);
-	runFunc("problem1Recurssion", ()=>problem1Recurssion(matrix), 25);
+	runFunc("problem1Recursion", ()=>problem1Recursion(matrix), 25);
 
 
 	const expected2 = {
