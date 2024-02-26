@@ -119,7 +119,34 @@ function problem2Maps(transactions) {
 
 
 function problem2reduce(transactions) {
+  return transactions.reduce((total, currentValue) => {
+    let totalIncome = total.totalIncome
+    let totalExpenses = total.totalExpenses
+    let highestAmount = total.highestAmount
+    let categoryCounts = total.categoryCounts || {}
 
+    if (currentValue.type === "income") {
+      totalIncome += currentValue.amount || currentValue.totalIncome
+    }
+
+    if (currentValue.type === "expense") {
+      totalExpenses += currentValue.amount || currentValue.totalExpenses
+    }
+
+    if (total.highestAmount > (currentValue.amount || currentValue.highestAmount)) {
+      highestAmount = total.highestAmount
+    } else {
+      highestAmount = currentValue.amount || currentValue.highestAmount
+    }
+
+    if (categoryCounts[currentValue.category]) {
+      categoryCounts[currentValue.category] += 1
+    } else {
+      categoryCounts[currentValue.category] = 1
+    }
+
+    return { totalIncome, totalExpenses, highestAmount, categoryCounts }
+  }, { totalIncome: 0, totalExpenses: 0, highestAmount: 0, categoryCounts: {} })
 }
 
 const transactions = [
