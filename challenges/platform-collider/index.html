@@ -7,6 +7,8 @@
 
 		<canvas id="canvas" width="1200" height="1000" ></canvas>
 		<div id="fps"></div>
+    <div id="player"></div>
+    <div id="landing"></div>
 
 <SCRIPT>
 
@@ -77,7 +79,7 @@ function gameLoop() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	//Draw Map
-	ctx.fillStyle = "#FF0000";
+	ctx.fillStyle = "#FF0000"; // Red tile
 	for(let y=0; y < map1.length; ++y) {
 		for(let x=0; x < map1[y].length; ++x) {
 			if(map1[y][x] === 'x') {
@@ -106,9 +108,53 @@ function gameLoop() {
 		// feel free to call a function from here if you like but don't modify other code.
 	//****************************************
 
+
 	player = next;
-	ctx.fillStyle = "#FF00FF";
+	ctx.fillStyle = "#FF00FF"; // Pink player dot
 	ctx.fillRect(player.x, (player.y), tileSize, tileSize);
+
+  const safeZonesY = []
+  const safeZonesX = []
+  const safeZones = []
+
+  for(let y=0; y < map1.length; ++y) {
+    for(let x=0; x < map1[y].length; ++x) {
+      if(map1[y][x] === 'x') {
+        safeZonesY.push(y*tileSize);
+        safeZonesX.push(x*tileSize);
+        safeZones.push({x: x*tileSize, y: y*tileSize});
+      }
+    }
+  }
+
+  if(player.y > canvas.height - 40) {
+    player.y = canvas.height - 40
+    jumping = false
+  }
+
+  if (player.x < 0) {
+    player.x = 0
+  }
+
+  if (player.x > canvas.width - tileSize) {
+    player.x = canvas.width - tileSize
+  }
+
+  // safeZones.each(zone => {
+  //   if(zone.x === player.x && zone.y === player.y) {
+  //     player.acceleration.y = 0
+  //     return
+  //   }
+
+  //   return
+  // })
+
+  const landing = document.getElementById("landing")
+  landing.innerHTML = `Safe places: <p>${safeZones.map(zone => `<p>${zone.x}, ${zone.y}</p>`)}</p>`
+
+
+  const playerStats = document.getElementById("player")
+  playerStats.innerHTML = `x: ${player.x}, y: ${player.y}, v: (${player.v.x}, ${player.v.y}))`
 }
 
 
@@ -119,32 +165,34 @@ function timer(){
 }
 
 document.addEventListener('keydown', function(event) {
-switch(event.keyCode){
-	case 38:
-		if(!jumping){
-			player.acceleration.y = -.3;
-			jumping = true;
-		}
-	break;
+  event.preventDefault()
+  switch(event.keyCode){
+    case 38:
+      if(!jumping){
+        player.acceleration.y = -.3;
+        jumping = true;
+      }
+    break;
 
-	case 37:
-		player.v.x = -1;
-		break;
-	case 39:
-		player.v.x = 1;
-		break;
-}
+    case 37:
+      player.v.x = -1;
+      break;
+    case 39:
+      player.v.x = 1;
+      break;
+  }
 });
 
 document.addEventListener('keyup', function(event) {
-switch(event.keyCode){
-	case 37:
-		player.v.x = 0;
-		break;
-	case 39:
-		player.v.x = 0;
-		break;
-}
+  event.preventDefault()
+  switch(event.keyCode){
+    case 37:
+      player.v.x = 0;
+      break;
+    case 39:
+      player.v.x = 0;
+      break;
+  }
 });
 
 
