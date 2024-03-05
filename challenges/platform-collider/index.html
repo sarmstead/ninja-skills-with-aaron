@@ -104,50 +104,44 @@ function gameLoop() {
 	}
 
 	//************ COLLISION CODE ***********
-		// This is your spot.
-		// feel free to call a function from here if you like but don't modify other code.
+    if(next.y > canvas.height - 40) {
+      next.y = canvas.height - 40
+      jumping = false
+    }
+
+    if (next.x < 0) {
+      next.x = 0
+    }
+
+    if (next.x > canvas.width - tileSize) {
+      next.x = canvas.width - tileSize
+    }
+
+		const nextX = Math.floor(next.x / tileSize)
+    const nextY = Math.floor(next.y / tileSize)
+
+    const upperLeft = map1[nextY][nextX]
+    const lowerLeft = map1[nextY + 1][nextX]
+    const upperRight = map1[nextY][nextX + 1]
+    const lowerRight = map1[nextY + 1][nextX + 1]
+    if (upperLeft === 'x' || upperRight === 'x') {
+      next.x.v = 0
+      next.y = (nextY - 1) * tileSize
+      jumping = false
+    }
+
+    if (lowerLeft === 'x' || lowerRight === 'x') {
+      next.x.v = 0
+      next.y = nextY * tileSize
+      jumping = false
+    }
+
 	//****************************************
 
 
 	player = next;
 	ctx.fillStyle = "#FF00FF"; // Pink player dot
 	ctx.fillRect(player.x, (player.y), tileSize, tileSize);
-
-  const safeZonesY = []
-  const safeZonesX = []
-  const safeZones = []
-
-  for(let y=0; y < map1.length; ++y) {
-    for(let x=0; x < map1[y].length; ++x) {
-      if(map1[y][x] === 'x') {
-        safeZonesY.push(y*tileSize);
-        safeZonesX.push(x*tileSize);
-        safeZones.push({x: x*tileSize, y: y*tileSize});
-      }
-    }
-  }
-
-  if(player.y > canvas.height - 40) {
-    player.y = canvas.height - 40
-    jumping = false
-  }
-
-  if (player.x < 0) {
-    player.x = 0
-  }
-
-  if (player.x > canvas.width - tileSize) {
-    player.x = canvas.width - tileSize
-  }
-
-  // safeZones.each(zone => {
-  //   if(zone.x === player.x && zone.y === player.y) {
-  //     player.acceleration.y = 0
-  //     return
-  //   }
-
-  //   return
-  // })
 
   const landing = document.getElementById("landing")
   landing.innerHTML = `Safe places: <p>${safeZones.map(zone => `<p>${zone.x}, ${zone.y}</p>`)}</p>`
